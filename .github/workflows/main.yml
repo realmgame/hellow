@@ -1,0 +1,24 @@
+name: Main
+on: [push]
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Initialize
+        run: terraform init terraform
+      - name: Validate
+        run: terraform validate terraform
+      - name: Lint
+        run: terraform fmt -recursive -check terraform
+      - name: Apply
+        run: terraform apply -auto-approve terraform
+      - name: Apply Idempotency Check
+        run: terraform plan -detailed-exitcode terraform
+      - name: Destroy
+        run: terraform destroy -auto-approve terraform
+      - name: Destroy Idempotency Check
+        run: terraform plan -detailed-exitcode -destroy terraform
