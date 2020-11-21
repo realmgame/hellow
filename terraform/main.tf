@@ -1,9 +1,9 @@
 resource "aws_lambda_function" "this" {
   function_name    = var.name
-  filename         = "../this.zip"
+  filename         = "this.zip"
   role             = aws_iam_role.this.arn
   handler          = "main.main"
-  source_code_hash = filebase64sha256("../this.zip")
+  source_code_hash = filebase64sha256("this.zip")
   runtime          = "python3.8"
 }
 
