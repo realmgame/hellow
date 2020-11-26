@@ -8,11 +8,11 @@ jobs:
   main:
     runs-on: ubuntu-latest
     container:
-      image: hashicorp/terraform:0.13.5
+      image: ghcr.io/realmgame/terraform:latest
     steps:
       - uses: actions/checkout@v2
       - name: Package
-        run: tar -cvzf this.tar.gz main.py
+        run: zip this.zip main.py
       - name: Initialize
         run: terraform init terraform
       - name: Validate
