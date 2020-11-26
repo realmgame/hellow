@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Package
-        run: zip this.zip main.py
+        run: tar -cvzf this.tar.gz main.py
       - name: Initialize
         run: terraform init terraform
       - name: Validate
