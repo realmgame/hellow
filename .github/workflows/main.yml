@@ -6,7 +6,8 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
   main:
-    runs-on: ubuntu-latest
+    container:
+      image: hashicorp/terraform:0.13.5
     steps:
       - uses: actions/checkout@v2
       - name: Package
