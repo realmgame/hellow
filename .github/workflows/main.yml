@@ -7,8 +7,6 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/realmgame/terraform:latest
     steps:
       - uses: actions/checkout@v2
       - name: Package
